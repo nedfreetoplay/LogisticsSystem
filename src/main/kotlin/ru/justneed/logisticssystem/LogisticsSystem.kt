@@ -1,6 +1,6 @@
-package example.examplemod
+package ru.justneed.logisticssystem
 
-import example.examplemod.block.ModBlocks
+import ru.justneed.logisticssystem.init.ModBlocks
 import net.minecraft.client.Minecraft
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.fml.common.EventBusSubscriber
@@ -21,13 +21,12 @@ import thedarkcolour.kotlinforforge.neoforge.forge.runForDist
  *
  * An example for blocks is in the `blocks` package of this mod.
  */
-@Mod(ExampleMod.ID)
+@Mod(LogisticsSystem.MOD_ID)
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
-object ExampleMod {
-    const val ID = "examplemod"
+object LogisticsSystem {
+    const val MOD_ID = "logisticssystem"
 
-    // the logger for our mod
-    val LOGGER: Logger = LogManager.getLogger(ID)
+    val LOGGER: Logger = LogManager.getLogger(MOD_ID)
 
     init {
         LOGGER.log(Level.INFO, "Hello world!")
@@ -37,11 +36,11 @@ object ExampleMod {
 
         val obj = runForDist(
             clientTarget = {
-                MOD_BUS.addListener(::onClientSetup)
+                MOD_BUS.addListener(LogisticsSystem::onClientSetup)
                 Minecraft.getInstance()
             },
             serverTarget = {
-                MOD_BUS.addListener(::onServerSetup)
+                MOD_BUS.addListener(LogisticsSystem::onServerSetup)
                 "test"
             })
 
