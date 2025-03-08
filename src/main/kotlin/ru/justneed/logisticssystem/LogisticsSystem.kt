@@ -11,6 +11,8 @@ import net.neoforged.fml.event.lifecycle.FMLDedicatedServerSetupEvent
 import org.apache.logging.log4j.Level
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
+import ru.justneed.logisticssystem.init.ModCreativeTabs
+import ru.justneed.logisticssystem.init.ModItems
 import thedarkcolour.kotlinforforge.neoforge.forge.MOD_BUS
 import thedarkcolour.kotlinforforge.neoforge.forge.runForDist
 
@@ -29,10 +31,11 @@ object LogisticsSystem {
     val LOGGER: Logger = LogManager.getLogger(MOD_ID)
 
     init {
-        LOGGER.log(Level.INFO, "Hello world!")
+        LOGGER.log(Level.DEBUG, "Logistics System Init")
 
-        // Register the KDeferredRegister to the mod-specific event bus
+        ModCreativeTabs.REGISTRY.register(MOD_BUS)
         ModBlocks.REGISTRY.register(MOD_BUS)
+        ModItems.REGISTRY.register(MOD_BUS)
 
         val obj = runForDist(
             clientTarget = {
@@ -45,6 +48,7 @@ object LogisticsSystem {
             })
 
         println(obj)
+        LOGGER.log(Level.DEBUG, "Logistics System Init End")
     }
 
     /**

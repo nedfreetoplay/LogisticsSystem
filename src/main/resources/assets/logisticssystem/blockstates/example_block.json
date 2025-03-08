@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "logisticssystem:block/example_block"
+    }
+  }
+}
